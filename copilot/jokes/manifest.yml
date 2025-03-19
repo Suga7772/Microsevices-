@@ -6,8 +6,8 @@ image:
   port: 3006
 
 http:
-  path: '/jokes'
-  healthcheck: '/jokes'
+  path: 'api/jokes'
+  healthcheck: 'api/jokes'
 
 cpu: 256
 memory: 512

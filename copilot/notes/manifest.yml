@@ -6,8 +6,8 @@ image:
   port: 3007
 
 http:
-  path: '/notes'
-  healthcheck: '/notes'
+  path: 'api/notes'
+  healthcheck: 'api/notes'
 
 cpu: 256
 memory: 512

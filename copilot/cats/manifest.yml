@@ -6,8 +6,8 @@ image:
   port: 5000
 
 http:
-  path: '/cat'
-  healthcheck: '/cat'
+  path: 'api/cat'
+  healthcheck: 'api/cat'
 
 cpu: 256
 memory: 512

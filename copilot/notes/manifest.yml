@@ -2,12 +2,12 @@ name: email
 type: Load Balanced Web Service
 
 image:
-  build: ../../../email/Dockerfile
-  port: 5000
+  build: ../../../notes/Dockerfile
+  port: 3007
 
 http:
-  path: '/email'
-  healthcheck: '/email'
+  path: '/notes'
+  healthcheck: '/notes'
 
 cpu: 256
 memory: 512

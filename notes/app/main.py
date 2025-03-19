@@ -1,36 +1,19 @@
-from flask import Flask, render_template, request, redirect
-import sqlite3, os
+from flask import Flask, render_template, request, redirect, url_for
 
-app = Flask(__name__, template_folder=os.path.abspath('../templates'))
-# Create database
-def init_db():
-    conn = sqlite3.connect('notes.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, content TEXT)''')
-    conn.commit()
-    conn.close()
+app = Flask(__name__)
 
-init_db()
+# Temporary storage (Replace this with a database later)
+notes_list = []
 
-@app.route('/note', methods=['GET', 'POST'])
-def home():
+@app.route('/notes', methods=['GET', 'POST'])
+def notes():
     if request.method == 'POST':
-        note = request.form.get('note')
-        if note:
-            conn = sqlite3.connect('notes.db')
-            c = conn.cursor()
-            c.execute("INSERT INTO notes (content) VALUES (?)", (note,))
-            conn.commit()
-            conn.close()
-            return redirect('/')
-
-    conn = sqlite3.connect('notes.db')
-    c = conn.cursor()
-    c.execute("SELECT * FROM notes ORDER BY id DESC")
-    notes = c.fetchall()
-    conn.close()
+        note = request.form.get("note")
+        if note: 
+            notes_list.append(note)  # Store note
+        return redirect(url_for('notes'))  # Redirect back to /notes
     
-    return render_template('index.html', notes=notes)
+    return render_template('index.html', notes=notes_list)  # Always send notes
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3007, debug=True)

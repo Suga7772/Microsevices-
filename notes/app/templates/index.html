@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note Taking App</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        input, button { padding: 10px; margin: 5px; }
-        .note { background: #f4f4f4; padding: 10px; margin: 5px auto; width: 300px; border-radius: 5px; }
-    </style>
+    <title>Notes App</title>
 </head>
 <body>
-    <h2>A super cool yet Simple Note Taking App</h2>
-    <form method="POST">
-        <input type="text" name="note" placeholder="Enter your note..." required>
+    <h1>Notes</h1>
+
+    <!-- Input form to add a note -->
+    <form id="noteForm" action="/notes" method="POST">
+        <input type="text" name="note" id="noteInput" placeholder="Enter your note" required>
         <button type="submit">Add Note</button>
     </form>
-    <h3>Your Cloud centric Notes:</h3>
-    {% for note in notes %}
-        <div class="note">{{ note[1] }}</div>
-    {% endfor %}
+
+    <!-- Notes List -->
+    <ul>
+        {% for note in notes %}
+            <li>{{ note }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

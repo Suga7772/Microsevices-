@@ -1,0 +1,18 @@
+name: email
+type: Load Balanced Web Service
+
+image:
+  build: ../../../email/Dockerfile
+  port: 5000
+
+http:
+  path: '/email'
+  healthcheck: '/email'
+
+cpu: 256
+memory: 512
+count: 1
+
+environments:
+  production:
+    count: 2

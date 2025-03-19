@@ -14,6 +14,6 @@ COPY . .
 # Initialize the database (if needed)
 RUN if [ -f "init_db.sql" ]; then sqlite3 notes.db < init_db.sql; fi
 
-EXPOSE 3007
+EXPOSE 5002
 
 CMD ["python", "main.py"]

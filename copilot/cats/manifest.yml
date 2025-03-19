@@ -2,7 +2,7 @@ name: cats
 type: Load Balanced Web Service
 
 image:
-  build: ../../../cats/Dockerfile
+  build: Users/Mahrukh/Microservices-/cats/Dockerfile
   port: 5000
 
 http:
